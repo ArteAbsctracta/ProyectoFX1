@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="442.0" style="-fx-background-color: #d6bf93;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.RegistrarUsuarioFXMLController">
+   <children>
+      <Pane layoutY="83.0" prefHeight="503.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="51.0" layoutY="22.0" text="Nombre:" />
+            <Label layoutX="31.0" layoutY="82.0" text="Apellido Paterno:" />
+            <Label layoutX="29.0" layoutY="150.0" text="Apellido Materno:" />
+            <Label layoutX="32.0" layoutY="218.0" text="Usuario:" />
+            <Label layoutX="236.0" layoutY="22.0" text="Contraseña:" />
+            <Label layoutX="21.0" layoutY="293.0" text="Estatus:" />
+            <ComboBox fx:id="cmb_rolRegistrar" layoutX="22.0" layoutY="399.0" onAction="#rolRegistrar" prefWidth="150.0" promptText="Rol" />
+            <TextField fx:id="txt_nombreRegistrar" layoutX="31.0" layoutY="49.0" />
+            <TextField fx:id="txt_apellidoPaternoRegistrar" layoutX="31.0" layoutY="108.0" />
+            <TextField fx:id="txt_apellidoMaternoRegistrar" layoutX="29.0" layoutY="178.0" />
+            <TextField fx:id="txt_usuarioRegistrar" layoutX="31.0" layoutY="245.0" />
+            <TextField fx:id="txt_passwordRegistrar" layoutX="233.0" layoutY="49.0" />
+            <TextField fx:id="txt_estatusRegistrar" editable="false" layoutX="23.0" layoutY="323.0" text="Activo" />
+            <Button fx:id="btn_registrarUsuario" layoutX="217.0" layoutY="369.0" mnemonicParsing="false" onAction="#registrarUsuario" prefHeight="27.0" prefWidth="91.0" text="Registrar">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_cancelarRegistro" layoutX="322.0" layoutY="370.0" mnemonicParsing="false" onAction="#cancelarRegistro" prefHeight="25.0" prefWidth="91.0" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="22.0" layoutY="365.0" text="Rol:" />
+            <Label layoutX="236.0" layoutY="91.0" text="curp:" />
+            <TextField fx:id="txt_curpRegistrar" layoutX="233.0" layoutY="108.0" />
+         </children>
+      </Pane>
+      <Label layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="210.0" text="Registro de usuario">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

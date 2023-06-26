@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="637.0" style="-fx-background-color: #e7e9c4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.EditarVentaFXMLController">
+   <children>
+      <Pane layoutX="7.0" layoutY="116.0" prefHeight="463.0" prefWidth="629.0" style="-fx-background-color: WHITE;">
+         <children>
+            <Button layoutX="419.0" layoutY="394.0" mnemonicParsing="false" text="Registrar">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/done.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="516.0" layoutY="394.0" mnemonicParsing="false" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Text layoutX="22.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal" />
+            <TextField fx:id="txt_subTotal" layoutX="14.0" layoutY="40.0" />
+            <Text layoutX="21.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IvaVenta" />
+            <TextField fx:id="txt_ivaVenta" layoutX="14.0" layoutY="113.0" />
+            <Text layoutX="20.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TotalVenta" />
+            <TextField fx:id="txt_totalVenta" layoutX="14.0" layoutY="183.0" />
+            <Text layoutX="22.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idcontrato" wrappingWidth="73.666015625" />
+            <TextField fx:id="txt_idContrato" layoutX="14.0" layoutY="257.0" />
+            <Text layoutX="14.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EstatusVenta" wrappingWidth="148.5078125" />
+            <TextField fx:id="txt_estatusVenta1" layoutX="14.0" layoutY="325.0" />
+            <Text layoutX="230.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="idCliente" wrappingWidth="148.5078125" />
+            <TextField fx:id="txt_estatusVenta" layoutX="230.0" layoutY="40.0" />
+            <Text layoutX="230.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="idCreador" wrappingWidth="148.5078125" />
+            <TextField fx:id="txt_estatusVenta21" layoutX="230.0" layoutY="95.0" />
+            <Text layoutX="221.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fecha de Creacion" wrappingWidth="148.5078125" />
+            <DatePicker layoutX="218.0" layoutY="162.0" />
+            <Text layoutX="221.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total de Articulos" wrappingWidth="148.5078125" />
+            <TextField fx:id="txt_estatusVenta211" layoutX="221.0" layoutY="237.0" />
+            <Text layoutX="221.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fecha de Cancelacion" wrappingWidth="148.5078125" />
+            <DatePicker layoutX="218.0" layoutY="305.0" />
+            <Text layoutX="442.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="idUsuario" wrappingWidth="148.5078125" />
+            <TextField fx:id="txt_estatusVenta221" layoutX="434.0" layoutY="55.0" />
+            <Text layoutX="438.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo  de Venta" wrappingWidth="156.173828125" />
+            <ComboBox layoutX="428.0" layoutY="113.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <Text layoutX="26.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Ventas">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

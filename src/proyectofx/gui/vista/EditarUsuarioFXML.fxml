@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="429.0" style="-fx-background-color: #b7be5f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.EditarUsuarioFXMLController">
+   <children>
+      <Pane layoutY="89.0" prefHeight="526.0" prefWidth="429.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="38.0" layoutY="13.0" text="Nombre:" />
+            <Label layoutX="39.0" layoutY="76.0" text="Apellido Paterno:" />
+            <Label layoutX="37.0" layoutY="144.0" text="Apellido Materno:" />
+            <Label layoutX="40.0" layoutY="212.0" text="Usuario:" />
+            <Label layoutX="38.0" layoutY="282.0" text="Contraseña:" />
+            <Label layoutX="49.0" layoutY="358.0" text="Estatus:" />
+            <ComboBox fx:id="cmb_rolEditar" layoutX="226.0" layoutY="72.0" onAction="#rolEditar" prefWidth="150.0" promptText="Rol" />
+            <TextField fx:id="txt_nombreEditar" layoutX="39.0" layoutY="43.0" />
+            <TextField fx:id="txt_apellidoPaternoEditar" layoutX="39.0" layoutY="102.0" />
+            <TextField fx:id="txt_apellidoMaternoEditar" layoutX="37.0" layoutY="170.0" />
+            <TextField fx:id="txt_usuarioEditar" layoutX="39.0" layoutY="238.0" />
+            <TextField fx:id="txt_passwordEditar" layoutX="37.0" layoutY="316.0" />
+            <TextField fx:id="txt_estatusEditar" editable="false" layoutX="39.0" layoutY="389.0" />
+            <Button fx:id="btn_editarUsuario" layoutX="226.0" layoutY="376.0" mnemonicParsing="false" onAction="#editarUsuario" prefHeight="27.0" prefWidth="91.0" text="Editar">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_cancelarEditar" layoutX="324.0" layoutY="377.0" mnemonicParsing="false" onAction="#cancelarEditar" prefHeight="25.0" prefWidth="91.0" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="236.0" layoutY="56.0" text="Rol:" />
+            <TextField fx:id="txt_curpEditar" layoutX="234.0" layoutY="149.0" />
+            <Label layoutX="233.0" layoutY="127.0" text="curp:" />
+         </children>
+      </Pane>
+      <Label layoutX="35.0" layoutY="38.0" prefHeight="28.0" prefWidth="159.0" text="Editar usuario">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

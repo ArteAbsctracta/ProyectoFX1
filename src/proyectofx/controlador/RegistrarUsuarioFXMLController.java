@@ -1,0 +1,193 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package proyectofx.controlador;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import org.json.JSONException;
+import org.json.JSONObject;
+import proyectofx.api.request.Requests;
+import proyectofx.modelo.pojos.Roles;
+import proyectofx.modelo.pojos.Usuarios;
+import proyectofx.utils.Window;
+
+/**
+ * FXML Controller class
+ *
+ * @author afs30
+ */
+public class RegistrarUsuarioFXMLController implements Initializable {
+
+    @FXML
+    private ComboBox<String> cmb_rolRegistrar;
+    private Integer[] arrayID;
+    private ObservableList<Roles> comboBoxList;
+    
+    @FXML
+    private TextField txt_nombreRegistrar;
+    @FXML
+    private TextField txt_apellidoPaternoRegistrar;
+    @FXML
+    private TextField txt_apellidoMaternoRegistrar;
+    @FXML
+    private TextField txt_usuarioRegistrar;
+    @FXML
+    private TextField txt_passwordRegistrar;
+    @FXML
+    private TextField txt_estatusRegistrar;
+    @FXML
+    private Button btn_registrarUsuario;
+    @FXML
+    private Button btn_cancelarRegistro;
+
+    Usuarios usuario = null;                            
+    Roles rol = null;
+    @FXML
+    private TextField txt_curpRegistrar;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        comboBoxList = getAllRoles();
+
+        List<String> nombreRoles = new LinkedList<String>();
+        Integer idRoles[] = new Integer[comboBoxList.size()];
+        int i = 0;
+        for (Roles rol : comboBoxList) {
+            nombreRoles.add(rol.getNombreRol());
+            idRoles[i] = rol.getIdRol();
+            i++;
+        }
+        this.arrayID = idRoles;
+        ObservableList<String> ObsnombreRoles = FXCollections.observableArrayList(nombreRoles);
+        cmb_rolRegistrar.setItems(ObsnombreRoles);
+    }    
+
+    public void setData(Usuarios usuario){  
+        this.usuario=usuario;
+    }
+    
+    @FXML
+    private void rolRegistrar(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void registrarUsuario(ActionEvent event) {
+       
+        int position = this.cmb_rolRegistrar.getSelectionModel().getSelectedIndex();
+        
+        if(this.txt_nombreRegistrar.getText().isEmpty() ||
+                this.txt_apellidoPaternoRegistrar.getText().isEmpty() || 
+                this.txt_apellidoMaternoRegistrar.getText().isEmpty() || 
+                this.txt_usuarioRegistrar.getText().isEmpty() ||
+                this.txt_passwordRegistrar.getText().isEmpty() ||
+                 this.txt_curpRegistrar.getText().isEmpty()||
+                position<=-1){
+            
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error al registrar un usuario");
+            alert.setHeaderText(null);
+            alert.setContentText("Alguno de los campos se encuentra Vacio");
+            alert.showAndWait();
+        }else{
+            
+            try {
+                String verificacion = null;
+                String v = "0";
+                HashMap<String, Object> buscar = new LinkedHashMap<>();
+                buscar.put("usuario", this.txt_usuarioRegistrar.getText());
+                verificacion = Requests.post("/Usuarios/usuarioId/", buscar);
+                
+                JSONObject dataJsonV = new JSONObject(verificacion);
+                
+                if(dataJsonV.getString("mensaje").equals("0")){
+                    
+                    int rol = this.arrayID[position];
+                    
+                    HashMap<String, Object> params = new LinkedHashMap<>();
+                    params.put("nombre", this.txt_nombreRegistrar.getText());
+                    params.put("apellidoPaterno", this.txt_apellidoPaternoRegistrar.getText());
+                    params.put("apellidoMaterno", this.txt_apellidoMaternoRegistrar.getText());
+                    params.put("usuario", this.txt_usuarioRegistrar.getText());
+                    params.put("password", this.txt_passwordRegistrar.getText());
+                    params.put("idRol", rol);
+                    params.put("curp", this.txt_curpRegistrar.getText());
+                    
+                    String respuesta = Requests.post("/Usuarios/registrarUsuario/", params);
+
+                    JSONObject dataJson = new JSONObject(respuesta);
+
+                    if ((Boolean) dataJson.get("error") == false) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informativo");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                        Window.close(event);
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                    }
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El usuario ya esta registrado...");
+                    alert.showAndWait();
+                }
+            } catch (JSONException ex) {
+                Logger.getLogger(RegistrarUsuarioFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @FXML
+    private void cancelarRegistro(ActionEvent event) {
+         Window.close(event);
+    }
+    
+    
+    private ObservableList getAllRoles(){
+                
+        String respuesta = Requests.get("/Roles/getAllRolActivo/");
+        Gson gson = new Gson();
+        
+        TypeToken<List<Roles>> token = new TypeToken<List<Roles>>(){   
+        };
+
+        List<Roles> listaRoles = gson.fromJson(respuesta, token.getType());
+        
+        comboBoxList=FXCollections.observableArrayList(listaRoles);
+        System.out.print(comboBoxList);
+        return comboBoxList;
+    }
+    
+
+    
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="pnl_principal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="1022.0" style="-fx-background-color: e7e9c4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.PrincipalFXMLController">
+   <top>
+      <MenuBar fx:id="mb_principal" style="-fx-background-color: #d6bf93;">
+        <menus>
+          <Menu fx:id="mi_empeño" mnemonicParsing="false" text="Empeños">
+            <items>
+              <MenuItem fx:id="mi_contratos" mnemonicParsing="false" onAction="#clickContratos" text="Contratos" />
+              <MenuItem fx:id="mi_prendas" mnemonicParsing="false" onAction="#clickPrendas" text="Prendas" />
+              <MenuItem fx:id="mi_comercializacion" mnemonicParsing="false" onAction="#clickComercializacion" text="Comercializacion" />
+              <MenuItem fx:id="mi_empeno" mnemonicParsing="false" onAction="#clickEmpeño" text="Empeño" />
+
+            </items>
+          </Menu>
+          <Menu fx:id="mi_clientes" mnemonicParsing="false" text="Clientes">
+               <items>
+                  <MenuItem fx:id="mi_cliente" mnemonicParsing="false" onAction="#clickCliente" text="Clientes" />
+               </items>
+          </Menu>
+            <Menu fx:id="mi_ventas" mnemonicParsing="false" text="Ventas">
+               <items>
+                  <MenuItem fx:id="mi_venta" mnemonicParsing="false" onAction="#clickVenta" text="Ventas" />
+               </items>
+            </Menu>
+          <Menu fx:id="mi_usuarios" mnemonicParsing="false" text="Usuarios">
+               <items>
+                  <MenuItem fx:id="mi_usuario" mnemonicParsing="false" onAction="#clickUsuario" text="Usuarios" />
+               </items>
+          </Menu>
+            <Menu fx:id="mi_catalogo" mnemonicParsing="false" text="Catalogos">
+              <items>
+               
+                  <MenuItem fx:id="mi_sistemaCatalogos" mnemonicParsing="false" onAction="#clickSistemaCatalogo" text="Sistema" />
+                  <MenuItem fx:id="mi_prendaCatalogos" mnemonicParsing="false" onAction="#clickPrendaCatalogo" text="Prenda" />
+              </items>
+            </Menu>
+            <Menu fx:id="mi_categorias" mnemonicParsing="false" text="Categorias">
+               <items>
+                  <MenuItem fx:id="mi_prendaCategorias" mnemonicParsing="false" onAction="#clickprendasCategorias" text="prendas" />
+                  <MenuItem fx:id="mi_sistemaCategorias" mnemonicParsing="false" onAction="#clickSistemaCategoria" text="sistema" />
+               </items>
+            </Menu>
+            <Menu fx:id="mi_movimientos" mnemonicParsing="false" text="Movimientos">
+              <items>
+                <MenuItem fx:id="mi_ingresos" mnemonicParsing="false" onAction="#clickIngreso" text="Ingresos" />
+                  <MenuItem fx:id="mi_egresos" mnemonicParsing="false" onAction="#clickEgreso" text="Egresos" />
+              </items>
+            </Menu>
+            <Menu fx:id="mi_sesion" mnemonicParsing="false" text="Cerrar Sesion">
+              <items>
+                <MenuItem fx:id="mi_cerrar" mnemonicParsing="false" onAction="#clickSesion" text="CerraSesion" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+
+   </center>
+   <center>
+      <ImageView fitHeight="588.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../img/EMPENO-FACIL-PNG-500x500.png" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>

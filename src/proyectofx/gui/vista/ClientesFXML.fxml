@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1022.0" style="-fx-background-color: #e7e9c4;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="32.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes" wrappingWidth="122.7421875">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tbl_cliente" layoutX="52.0" layoutY="168.0" prefHeight="425.0" prefWidth="896.0">
+        <columns>
+          <TableColumn fx:id="tcl_nombre" prefWidth="261.0" text="Nombre" />
+          <TableColumn fx:id="tcl_rfc" prefWidth="291.0" text="RFC" />
+            <TableColumn fx:id="tcl_estatuscliente" prefWidth="343.0" text="EstatusCliente" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_registrar" layoutX="70.0" layoutY="124.0" mnemonicParsing="false" text="Regitrar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_Editar" layoutX="155.0" layoutY="124.0" mnemonicParsing="false" text="Editar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_activar" layoutX="233.0" layoutY="124.0" mnemonicParsing="false" text="Activar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/alta.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_desactivar" layoutX="320.0" layoutY="124.0" mnemonicParsing="false" text="Desactivar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/down.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="txt_busquedaCliente" layoutX="527.0" layoutY="124.0" />
+      <Button fx:id="btn_buscar" layoutX="698.0" layoutY="124.0" mnemonicParsing="false" text="Buscar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_limpiar" layoutX="791.0" layoutY="124.0" mnemonicParsing="false" text="Limpiar">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text layoutX="467.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+   </children>
+</Pane>

@@ -131,7 +131,7 @@ public class VentasFXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       // this.cargarTabla();
+        this.cargarTabla();
     }    
     
         public void setData(Usuarios usuario){       

@@ -116,29 +116,29 @@ public class PrincipalFXMLController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/UsuariosFXML.fxml"));
             
             Parent principal = loader.load();
-            
+  
             UsuariosFXMLController usuario = loader.getController();
-
+            
             pnl_principal.setCenter(principal);
         }catch(IOException ex){
             Logger.getLogger(PrincipalFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    @FXML
+     @FXML
     private void clickVenta(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/VentasFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/ventasFXML.fxml"));
             
             Parent principal = loader.load();
+            
+           VentasFXMLController usuario = loader.getController();
             usuario.setData(this.usuario);
-            VentasFXMLController usuario = loader.getController();
             pnl_principal.setCenter(principal);
         }catch(IOException ex){
             Logger.getLogger(PrincipalFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-    
+    }
     @FXML
     
     private void clickContratos(ActionEvent event) {

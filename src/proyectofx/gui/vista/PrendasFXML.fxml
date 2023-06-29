@@ -31,7 +31,7 @@
           <TableColumn fx:id="tcl_Kilataje" prefWidth="81.0" text="Kilataje" />
         </columns>
       </TableView>
-      <Button fx:id="btn_registrar" layoutX="70.0" layoutY="124.0" mnemonicParsing="false" text="Regitrar">
+      <Button fx:id="btn_registrar" layoutX="70.0" layoutY="124.0" mnemonicParsing="false" onAction="#nuevaPrenda" text="Regitrar">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>

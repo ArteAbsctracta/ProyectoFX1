@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="442.0" style="-fx-background-color: #d6bf93;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.RegistrarEmpeñoFXMLController">
+   <children>
+      <Pane layoutY="83.0" prefHeight="503.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="32.0" layoutY="31.0" text="Cliente:" />
+            <Label layoutX="31.0" layoutY="82.0" text="Usuario:" />
+            <Label layoutX="29.0" layoutY="150.0" text="Almacenaje Porcentaje" />
+            <Label layoutX="32.0" layoutY="218.0" text="Porcentaje Interes" />
+            <Label layoutX="236.0" layoutY="22.0" text="Observaciones" />
+            <Label layoutX="21.0" layoutY="293.0" text="IVA Empeño" />
+            <TextField fx:id="txt_almacenajePorcentaje" layoutX="29.0" layoutY="178.0" prefHeight="25.0" prefWidth="77.0" />
+            <TextField fx:id="txt_interesPorcentaje" layoutX="31.0" layoutY="245.0" prefHeight="25.0" prefWidth="77.0" text="96" />
+            <TextField fx:id="txt_observaciones" layoutX="233.0" layoutY="49.0" prefHeight="53.0" prefWidth="149.0" />
+            <TextField fx:id="txt_IVAEmpeño" layoutX="21.0" layoutY="310.0" prefHeight="25.0" prefWidth="85.0" />
+            <Button fx:id="btn_registrarContrato" layoutX="217.0" layoutY="369.0" mnemonicParsing="false" onAction="#registrarEmpeño" prefHeight="27.0" prefWidth="91.0" text="Registrar">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_cancelarRegistro" layoutX="322.0" layoutY="370.0" mnemonicParsing="false" onAction="#cancelarRegistro" prefHeight="25.0" prefWidth="91.0" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="236.0" layoutY="121.0" text="Fecha de Creacion" />
+            <Label layoutX="122.0" layoutY="249.0" text="\%" />
+            <Label layoutX="169.0" layoutY="218.0" text="N. Periodos" />
+            <TextField fx:id="txt_numPeriodos" layoutX="169.0" layoutY="245.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="276.0" layoutY="218.0" text="Dias Periodo" />
+            <TextField fx:id="txt_diasPeriodo" layoutX="275.0" layoutY="245.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="122.0" layoutY="293.0" text="Tasa de Comercializacion" />
+            <TextField fx:id="txt_TasaComercializacion" layoutX="118.0" layoutY="310.0" prefHeight="25.0" prefWidth="112.0" />
+            <ComboBox fx:id="cmbCliente" layoutX="28.0" layoutY="49.0" prefWidth="150.0" />
+            <ComboBox fx:id="cmbUsuario" layoutX="28.0" layoutY="109.0" prefWidth="150.0" />
+            <DatePicker fx:id="dtCreacion" layoutX="235.0" layoutY="138.0" />
+            <Label layoutX="236.0" layoutY="170.0" text="Fecha de Actualizacion" />
+            <DatePicker fx:id="dtActualizacion" layoutX="235.0" layoutY="187.0" />
+            <Label layoutX="117.0" layoutY="182.0" text="\%" />
+         </children>
+      </Pane>
+      <Label layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="237.0" text="Registro de Empeño">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="442.0" style="-fx-background-color: #d6bf93;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.RegistrarContratoFXMLController">
+   <children>
+      <Pane layoutY="83.0" prefHeight="503.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="32.0" layoutY="31.0" text="Empeño" />
+            <Label layoutX="31.0" layoutY="82.0" text="Usuario:" />
+            <Label layoutX="32.0" layoutY="150.0" text="Importe Prestamo" />
+            <Label layoutX="33.0" layoutY="250.0" text="Contrato Anterior" />
+            <TextField fx:id="txt_importePrestamo" layoutX="30.0" layoutY="170.0" prefHeight="25.0" prefWidth="77.0" />
+            <TextField fx:id="txt_ContratoSiguiente" layoutX="31.0" layoutY="220.0" prefHeight="25.0" prefWidth="85.0" />
+            <Button fx:id="btn_registrarContrato" layoutX="216.0" layoutY="457.0" mnemonicParsing="false" onAction="#registrarContrato" prefHeight="27.0" prefWidth="91.0" text="Registrar">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_cancelarRegistro" layoutX="322.0" layoutY="458.0" mnemonicParsing="false" onAction="#cancelarRegistro" prefHeight="25.0" prefWidth="91.0" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="228.0" layoutY="37.0" text="Fecha de Creacion" />
+            <Label layoutX="32.0" layoutY="203.0" text="Contrato Siguiente" />
+            <TextField fx:id="txt_ContratoAnterior" layoutX="32.0" layoutY="269.0" prefHeight="25.0" prefWidth="112.0" />
+            <ComboBox fx:id="cmbEmpeno" layoutX="28.0" layoutY="49.0" prefWidth="150.0" />
+            <ComboBox fx:id="cmbUsuario" layoutX="28.0" layoutY="103.0" prefWidth="150.0" />
+            <DatePicker fx:id="dtCreacion" layoutX="227.0" layoutY="54.0" />
+            <Label layoutX="228.0" layoutY="86.0" text="Fecha de Actualizacion" />
+            <DatePicker fx:id="dtActualizacion" layoutX="227.0" layoutY="103.0" />
+            <Label layoutX="228.0" layoutY="133.0" text="Fecha Limite" />
+            <DatePicker fx:id="dtLimite" layoutX="227.0" layoutY="150.0" />
+            <Label layoutX="228.0" layoutY="182.0" text="Fecha de Comercializar" />
+            <DatePicker fx:id="dtComercializar" layoutX="227.0" layoutY="199.0" />
+            <Label layoutX="228.0" layoutY="231.0" text="Fecha de Cancelacion" />
+            <DatePicker fx:id="dtCancelacion" layoutX="227.0" layoutY="248.0" />
+            <Label layoutX="228.0" layoutY="282.0" text="Fecha de Comercializacion" />
+            <DatePicker fx:id="dtComercializacion" layoutX="227.0" layoutY="299.0" />
+            <Label layoutX="230.0" layoutY="332.0" text="Observaciones" />
+            <TextField fx:id="txt_Observaciones" layoutX="229.0" layoutY="351.0" prefHeight="63.0" prefWidth="174.0" />
+            <Label layoutX="33.0" layoutY="302.0" text="Refrendo" />
+            <TextField fx:id="txt_Refrendo" layoutX="32.0" layoutY="321.0" prefHeight="25.0" prefWidth="112.0" />
+            <Label layoutX="34.0" layoutY="351.0" text="Finiquito" />
+            <TextField fx:id="txt_Finiquito" layoutX="33.0" layoutY="370.0" prefHeight="25.0" prefWidth="112.0" />
+            <Label layoutX="34.0" layoutY="404.0" text="Espera" />
+            <TextField fx:id="txt_Espera" layoutX="33.0" layoutY="423.0" prefHeight="25.0" prefWidth="112.0" />
+         </children>
+      </Pane>
+      <Label layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="237.0" text="Registro de Contrato">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -27,7 +27,7 @@
           <TableColumn fx:id="tcl_Comercializacion" prefWidth="167.0" text="Comercializacion" />
         </columns>
       </TableView>
-      <Button fx:id="btn_registrar" layoutX="70.0" layoutY="124.0" mnemonicParsing="false" text="Regitrar">
+      <Button fx:id="btn_registrar" layoutX="70.0" layoutY="124.0" mnemonicParsing="false" onAction="#nuevoEmpeno" text="Regitrar">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -7,17 +7,25 @@ package proyectofx.controlador;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import proyectofx.api.request.Requests;
 import proyectofx.modelo.pojos.Empeño;
 
@@ -89,6 +97,28 @@ public class EmpenoFXMLController implements Initializable {
         listaContratos.forEach(e ->{
             tbl_Empeno.getItems().add(e);
         });
+    }
+
+    @FXML
+    private void nuevoEmpeno(ActionEvent event) {
+        try {
+            Stage stage = new Stage();   
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/RegistrarEmpeñoFXML.fxml")); 
+            
+            Parent formUsuarioRegistrar = loader.load(); 
+            
+            RegistrarEmpeñoFXMLController ctrl = loader.getController();   
+               
+            Scene scene = new Scene(formUsuarioRegistrar);  
+            stage.setScene(scene);
+            stage.setTitle("Registrar");
+            stage.setResizable(false);
+            stage.showAndWait();
+            this.cargarTabla();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

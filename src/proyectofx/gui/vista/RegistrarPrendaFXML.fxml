@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="442.0" style="-fx-background-color: #d6bf93;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectofx.controlador.RegistrarPrendaFXMLController">
+   <children>
+      <Pane layoutY="83.0" prefHeight="503.0" prefWidth="442.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="32.0" layoutY="31.0" text="Empeño" />
+            <Label layoutX="31.0" layoutY="82.0" text="Usuario:" />
+            <Label layoutX="37.0" layoutY="139.0" text="Categoria" />
+            <Label layoutX="36.0" layoutY="197.0" text="Serie" />
+            <TextField fx:id="txt_Categoria" layoutX="35.0" layoutY="159.0" prefHeight="25.0" prefWidth="77.0" />
+            <Button fx:id="btn_registrarPrenda" layoutX="216.0" layoutY="457.0" mnemonicParsing="false" onAction="#registrarPrenda" prefHeight="27.0" prefWidth="91.0" text="Registrar">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_cancelarRegistro" layoutX="322.0" layoutY="458.0" mnemonicParsing="false" onAction="#cancelarRegistro" prefHeight="25.0" prefWidth="91.0" text="Cancelar">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="23.0" layoutY="382.0" text="Fecha de Creacion" />
+            <TextField fx:id="txt_Serie" layoutX="35.0" layoutY="213.0" prefHeight="25.0" prefWidth="77.0" />
+            <ComboBox fx:id="cmbEmpeno" layoutX="28.0" layoutY="49.0" prefWidth="150.0" />
+            <ComboBox fx:id="cmbUsuario" layoutX="28.0" layoutY="103.0" prefWidth="150.0" />
+            <DatePicker fx:id="dtCreacion" layoutX="22.0" layoutY="399.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="315.0" layoutY="382.0" text="Fecha de Venta" />
+            <DatePicker fx:id="dtVenta" layoutX="315.0" layoutY="399.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="150.0" layoutY="382.0" text="Fecha de Comercializacion" />
+            <DatePicker fx:id="dtComercializacion" layoutX="150.0" layoutY="399.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="221.0" layoutY="194.0" text="Descripcion" />
+            <TextField fx:id="txt_Descripcion" layoutX="220.0" layoutY="213.0" prefHeight="63.0" prefWidth="174.0" />
+            <Label layoutX="129.0" layoutY="139.0" text="Sub Categoria" />
+            <TextField fx:id="txt_SubCategoria" layoutX="128.0" layoutY="159.0" prefHeight="25.0" prefWidth="77.0" />
+            <TextField fx:id="txt_Venta" layoutX="219.0" layoutY="45.0" prefHeight="25.0" prefWidth="85.0" />
+            <Label layoutX="220.0" layoutY="28.0" text="Precio Venta" />
+            <TextField fx:id="txt_PrecioComercializacion" layoutX="219.0" layoutY="95.0" prefHeight="25.0" prefWidth="85.0" />
+            <Label layoutX="220.0" layoutY="78.0" text="Precio Comercializacion" />
+            <Label layoutX="129.0" layoutY="194.0" text="Modelo" />
+            <TextField fx:id="txt_Modelo" layoutX="128.0" layoutY="213.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="224.0" layoutY="137.0" text="Num Piezas" />
+            <TextField fx:id="txt_NumPiezas" layoutX="223.0" layoutY="157.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="36.0" layoutY="248.0" text="Metal" />
+            <TextField fx:id="txt_Metal" layoutX="35.0" layoutY="264.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="129.0" layoutY="245.0" text="Peso" />
+            <TextField fx:id="txt_Peso" layoutX="128.0" layoutY="264.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="36.0" layoutY="299.0" text="Kilataje" />
+            <TextField fx:id="txt_kilataje" layoutX="35.0" layoutY="315.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="129.0" layoutY="296.0" text="Prestamo" />
+            <TextField fx:id="txt_Prestamo" layoutX="128.0" layoutY="315.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="35.0" layoutY="340.0" text="Modelo Prenda" />
+            <TextField fx:id="txt_Prenda" layoutX="34.0" layoutY="356.0" prefHeight="25.0" prefWidth="77.0" />
+            <Label layoutX="225.0" layoutY="294.0" prefHeight="17.0" prefWidth="180.0" text="ComercializacionAsociada" />
+            <TextField fx:id="txt_Comercializacion" layoutX="226.0" layoutY="313.0" prefHeight="25.0" prefWidth="77.0" />
+         </children>
+      </Pane>
+      <Label layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="237.0" text="Registro de Prenda">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

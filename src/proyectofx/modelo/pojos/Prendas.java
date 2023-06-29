@@ -20,13 +20,13 @@ public class Prendas {
     private String modelo;
     private String subcategoria;
     private String descripcionPrenda;
-    private boolean esMetal;
+    private String esMetal;
     private String peso;
     private String kilataje;
-    private double prestamo;
+    private String prestamo;
     private String modeloPrenda;
-    private double precioComercializacion;
-    private double precioVenta;
+    private String precioComercializacion;
+    private String precioVenta;
     private String estatusPrenda;
     private String comercializacionAsociada;
     private Date fechaCreacion;
@@ -37,7 +37,7 @@ public class Prendas {
     public Prendas() {
     }
 
-    public Prendas(Integer idPrenda, Integer idEmpeño, String categoria, Integer numPiezas, String serie, String modelo, String subcategoria, String descripcionPrenda, boolean esMetal, String peso, String kilataje, double prestamo, String modeloPrenda, double precioComercializacion, double precioVenta, String estatusPrenda, String comercializacionAsociada, Date fechaCreacion, Date fechaComercializacion, Date fechaVenta, Integer idUsuario, String nombreUsuario) {
+    public Prendas(Integer idPrenda, Integer idEmpeño, String categoria, Integer numPiezas, String serie, String modelo, String subcategoria, String descripcionPrenda, String esMetal, String peso, String kilataje, String prestamo, String modeloPrenda, String precioComercializacion, String precioVenta, String estatusPrenda, String comercializacionAsociada, Date fechaCreacion, Date fechaComercializacion, Date fechaVenta, Integer idUsuario, String nombreUsuario) {
         this.idPrenda = idPrenda;
         this.idEmpeño = idEmpeño;
         this.categoria = categoria;
@@ -134,11 +134,11 @@ public class Prendas {
         this.descripcionPrenda = descripcionPrenda;
     }
 
-    public boolean isEsMetal() {
+    public String isEsMetal() {
         return esMetal;
     }
 
-    public void setEsMetal(boolean esMetal) {
+    public void setEsMetal(String esMetal) {
         this.esMetal = esMetal;
     }
 
@@ -158,11 +158,11 @@ public class Prendas {
         this.kilataje = kilataje;
     }
 
-    public double getPrestamo() {
+    public String getPrestamo() {
         return prestamo;
     }
 
-    public void setPrestamo(double prestamo) {
+    public void setPrestamo(String prestamo) {
         this.prestamo = prestamo;
     }
 
@@ -174,19 +174,19 @@ public class Prendas {
         this.modeloPrenda = modeloPrenda;
     }
 
-    public double getPrecioComercializacion() {
+    public String getPrecioComercializacion() {
         return precioComercializacion;
     }
 
-    public void setPrecioComercializacion(double precioComercializacion) {
+    public void setPrecioComercializacion(String precioComercializacion) {
         this.precioComercializacion = precioComercializacion;
     }
 
-    public double getPrecioVenta() {
+    public String getPrecioVenta() {
         return precioVenta;
     }
 
-    public void setPrecioVenta(double precioVenta) {
+    public void setPrecioVenta(String precioVenta) {
         this.precioVenta = precioVenta;
     }
 

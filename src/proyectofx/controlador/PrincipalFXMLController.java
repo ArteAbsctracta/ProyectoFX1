@@ -143,11 +143,11 @@ public class PrincipalFXMLController implements Initializable {
     
     private void clickContratos(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/UsuariosFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/ContratoFXML.fxml"));
             
             Parent principal = loader.load();
             
-            UsuariosFXMLController usuario = loader.getController();
+            ContratoFXMLController usuario = loader.getController();
 
             pnl_principal.setCenter(principal);
         }catch(IOException ex){
@@ -158,11 +158,11 @@ public class PrincipalFXMLController implements Initializable {
     @FXML
     private void clickPrendas(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/UsuariosFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/PrendasFXML.fxml"));
             
             Parent principal = loader.load();
             
-            UsuariosFXMLController usuario = loader.getController();
+            PrendasFXMLController usuario = loader.getController();
 
             pnl_principal.setCenter(principal);
         }catch(IOException ex){
@@ -174,11 +174,11 @@ public class PrincipalFXMLController implements Initializable {
     @FXML
     private void clickComercializacion(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/UsuariosFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/ComercializacionFXML.fxml"));
             
             Parent principal = loader.load();
             
-            UsuariosFXMLController usuario = loader.getController();
+            ComercializacionFXMLController usuario = loader.getController();
 
             pnl_principal.setCenter(principal);
         }catch(IOException ex){
@@ -192,11 +192,11 @@ public class PrincipalFXMLController implements Initializable {
     @FXML
     private void clickEmpeño(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/UsuariosFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/EmpenoFXML.fxml"));
             
             Parent principal = loader.load();
             
-            UsuariosFXMLController usuario = loader.getController();
+            EmpenoFXMLController usuario = loader.getController();
 
             pnl_principal.setCenter(principal);
         }catch(IOException ex){

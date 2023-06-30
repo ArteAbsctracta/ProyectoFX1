@@ -143,6 +143,14 @@ public class EmpenoFXMLController implements Initializable {
             Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void activarEmpeño(ActionEvent event) {
+    }
+
+    @FXML
+    private void desactivarEmpeño(ActionEvent event) {
+    }
     
     
 }

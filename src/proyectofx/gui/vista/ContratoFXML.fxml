@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_activar" layoutX="233.0" layoutY="124.0" mnemonicParsing="false" text="Activar">
+      <Button fx:id="btn_activar" layoutX="233.0" layoutY="124.0" mnemonicParsing="false" onAction="#activarContrato" text="Activar">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btn_desactivar" layoutX="320.0" layoutY="124.0" mnemonicParsing="false" text="Desactivar">
+      <Button fx:id="btn_desactivar" layoutX="320.0" layoutY="124.0" mnemonicParsing="false" onAction="#desactivarContrato" text="Desactivar">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>

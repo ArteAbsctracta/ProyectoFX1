@@ -9,6 +9,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,12 +21,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.json.JSONException;
+import org.json.JSONObject;
 import proyectofx.api.request.Requests;
 import proyectofx.modelo.pojos.Prendas;
 /**
@@ -156,13 +162,6 @@ public class PrendasFXMLController implements Initializable {
         }
     }
 
-    @FXML
-    private void activar(ActionEvent event) {
-    }
-
-    @FXML
-    private void desactivar(ActionEvent event) {
-    }
 
     @FXML
     private void buscar(ActionEvent event) {
@@ -170,5 +169,152 @@ public class PrendasFXMLController implements Initializable {
 
     @FXML
     private void limpiar(ActionEvent event) {
+    }
+    Prendas prenda;
+    @FXML
+    private void activarPrenda(ActionEvent event) {
+        if(tbl_Prendas.getSelectionModel().getSelectedItem() != null){
+            prenda = tbl_Prendas.getSelectionModel().getSelectedItem();
+        }
+        
+        if(prenda != null){
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmación");
+            alert.setHeaderText(null);
+            alert.setContentText("Seguro que desea activar la prenda?...");
+            //alert.showAndWait();
+            
+            alert.showAndWait().ifPresent((ButtonType response) -> {
+                if (response == ButtonType.OK) {
+                    
+                    try {
+                        HashMap<String, Object> params = new LinkedHashMap<>();
+                        
+                        String respuesta = Requests.get("/Prendas/actualizarEstatus/"+prenda.getIdPrenda());
+                        
+                        String estado = prenda.getEstatusPrenda();
+                        if("ACTIVO".equals(estado)){
+                            
+                            JSONObject dataJson = new JSONObject(respuesta);
+                            
+                            if ((Boolean) dataJson.get("error") == false) {
+
+                                Alert alertC = new Alert(Alert.AlertType.INFORMATION);
+                                alertC.setTitle("Informativo");
+                                alertC.setHeaderText(null);
+                                alertC.setContentText(dataJson.getString("mensaje"));
+                                alertC.showAndWait();
+                                
+                                this.cargarTabla();
+
+                            } else {
+                                Alert alertN = new Alert(Alert.AlertType.INFORMATION);
+                                alertN.setTitle("Informativo");
+                                alertN.setHeaderText(null);
+                                alertN.setContentText(dataJson.getString("mensaje"));
+                                alertN.showAndWait();
+                                
+                                this.cargarTabla();
+                            }
+                        } else{
+                            Alert alertInactivo = new Alert(Alert.AlertType.INFORMATION);
+                            alertInactivo.setTitle("Informativo");
+                            alertInactivo.setHeaderText(null);
+                            alertInactivo.setContentText("La Prenda ya esta Activa...");
+                            alertInactivo.showAndWait();
+                        
+                            this.cargarTabla();
+                        }                      
+                    } catch (JSONException ex) {
+                        Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if (response == ButtonType.CANCEL) {
+                    
+                    this.cargarTabla();
+                }
+            });
+        }else{
+            Alert alertI = new Alert(Alert.AlertType.WARNING);
+            alertI.setTitle("Advertencia");
+            alertI.setHeaderText(null);
+            alertI.setContentText("Debe seleccionar una Prenda...");
+            alertI.showAndWait();
+        }
+    }
+    
+    
+    @FXML
+    private void desactivarPrenda(ActionEvent event) {
+        if(tbl_Prendas.getSelectionModel().getSelectedItem() != null){
+            prenda = tbl_Prendas.getSelectionModel().getSelectedItem();
+        }
+        
+        if(prenda != null){
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmación");
+            alert.setHeaderText(null);
+            alert.setContentText("Seguro que desea desactivar la prenda?...");
+            //alert.showAndWait();
+            
+            alert.showAndWait().ifPresent((ButtonType response) -> {
+                if (response == ButtonType.OK) {
+                    
+                    try {
+                        HashMap<String, Object> params = new LinkedHashMap<>();
+                        
+                        String respuesta = Requests.get("/Prendas/eliminarPrenda/"+prenda.getIdPrenda());
+                        
+                        String estado = prenda.getEstatusPrenda();
+                        if("INACTIVO".equals(estado)){
+                            
+                            JSONObject dataJson = new JSONObject(respuesta);
+                            
+                            if ((Boolean) dataJson.get("error") == false) {
+
+                                Alert alertC = new Alert(Alert.AlertType.INFORMATION);
+                                alertC.setTitle("Informativo");
+                                alertC.setHeaderText(null);
+                                alertC.setContentText(dataJson.getString("mensaje"));
+                                alertC.showAndWait();
+                                
+                                this.cargarTabla();
+
+                            } else {
+                                Alert alertN = new Alert(Alert.AlertType.INFORMATION);
+                                alertN.setTitle("Informativo");
+                                alertN.setHeaderText(null);
+                                alertN.setContentText(dataJson.getString("mensaje"));
+                                alertN.showAndWait();
+                                
+                                this.cargarTabla();
+                            }
+                        } else{
+                            Alert alertInactivo = new Alert(Alert.AlertType.INFORMATION);
+                            alertInactivo.setTitle("Informativo");
+                            alertInactivo.setHeaderText(null);
+                            alertInactivo.setContentText("La Prenda ya esta Inactivo...");
+                            alertInactivo.showAndWait();
+                        
+                            this.cargarTabla();
+                        }                      
+                    } catch (JSONException ex) {
+                        Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if (response == ButtonType.CANCEL) {
+                    
+                    this.cargarTabla();
+                }
+            });
+        }else{
+            Alert alertI = new Alert(Alert.AlertType.WARNING);
+            alertI.setTitle("Advertencia");
+            alertI.setHeaderText(null);
+            alertI.setContentText("Debe seleccionar una Prenda...");
+            alertI.showAndWait();
+        }
     }
 }

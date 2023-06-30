@@ -25,10 +25,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.json.JSONException;
 import org.json.JSONObject;
 import proyectofx.api.request.Requests;
+import proyectofx.modelo.pojos.Contratos;
 import proyectofx.modelo.pojos.Empeño;
 import proyectofx.modelo.pojos.Usuarios;
 import proyectofx.utils.Window;
@@ -40,6 +42,8 @@ import proyectofx.utils.Window;
  */
 public class RegistrarContratoFXMLController implements Initializable {
 
+    private boolean isRegistro;
+    private Contratos contrato;
     private ObservableList<Usuarios> comboBoxListUsuarios;
     private ObservableList<Empeño> comboBoxListEmpeños;
     @FXML
@@ -76,6 +80,8 @@ public class RegistrarContratoFXMLController implements Initializable {
     private TextField txt_Espera;
     @FXML
     private ComboBox<String> cmbEmpeno;
+    @FXML
+    private Label lblContrato;
 
     /**
      * Initializes the controller class.
@@ -110,6 +116,37 @@ public class RegistrarContratoFXMLController implements Initializable {
         dtComercializar.setValue(LocalDate.now());
         dtCreacion.setValue(LocalDate.now());
         dtLimite.setValue(LocalDate.now());
+    }
+
+    public void setData(Contratos prenda) {
+        this.contrato = prenda;
+        System.out.println(prenda);
+        this.cargarContrato();
+
+    }
+
+    private void cargarContrato() {
+        System.out.println(contrato.getIdEmpeño());
+        cmbUsuario.setValue(contrato.getNombreUsuario());
+        dtCreacion.setValue(LocalDate.parse(contrato.getFechaCreacion().substring(0, 10)));
+        dtActualizacion.setValue(LocalDate.parse(contrato.getFechaActualizacion().substring(0, 10)));
+        txt_importePrestamo.setText(contrato.getImportePrestamo().toString());
+        txt_ContratoSiguiente.setText(contrato.getContratoSiguiente());
+        txt_ContratoAnterior.setText(contrato.getContratoAnterior());
+        dtLimite.setValue(LocalDate.parse(contrato.getFechaLimite().substring(0, 10)));
+        dtComercializar.setValue(LocalDate.parse(contrato.getFechaComercializacion().substring(0, 10)));
+        dtCancelacion.setValue(LocalDate.parse(contrato.getFechaCancelacion().substring(0, 10)));
+        dtComercializacion.setValue(LocalDate.parse(contrato.getFechaComercializacion().substring(0, 10)));
+        txt_Observaciones.setText(contrato.getObservaciones());
+        txt_Refrendo.setText(contrato.getIdRefrendo().toString());
+        txt_Finiquito.setText(contrato.getIdFiniquito().toString());
+        txt_Espera.setText(contrato.getIdEspera().toString());
+        txt_Espera.setDisable(false);
+        cmbEmpeno.setValue(contrato.getIdEmpeño().toString());
+        cmbEmpeno.setDisable(false);
+        isRegistro = false;
+        lblContrato.setText("Actualizar Contrato");
+        btn_registrarContrato.setText("Actualizar");
     }
 
     @FXML
@@ -149,78 +186,151 @@ public class RegistrarContratoFXMLController implements Initializable {
 
     @FXML
     private void registrarContrato(ActionEvent event) {
-        int position = this.cmbUsuario.getSelectionModel().getSelectedIndex();
-        int position2 = this.cmbEmpeno.getSelectionModel().getSelectedIndex();
+        if (isRegistro) {
+            int position = this.cmbUsuario.getSelectionModel().getSelectedIndex();
+            int position2 = this.cmbEmpeno.getSelectionModel().getSelectedIndex();
 
-        if (this.dtCreacion.getValue() == null
-                || this.dtActualizacion.getValue() == null
-                || this.txt_importePrestamo.getText().isEmpty()
-                || this.txt_ContratoSiguiente.getText().isEmpty()
-                || this.txt_ContratoAnterior.getText().isEmpty()
-                || this.dtLimite.getValue() == null
-                || this.dtComercializar.getValue() == null
-                || this.dtCancelacion.getValue() == null
-                || this.dtComercializacion.getValue() == null
-                || this.txt_Observaciones.getText().isEmpty()
-                || this.txt_Refrendo.getText().isEmpty()
-                || this.txt_Finiquito.getText().isEmpty()
-                || this.txt_Espera.getText().isEmpty()
-                || position <= -1
-                || position2 <= -1) {
+            if (this.dtCreacion.getValue() == null
+                    || this.dtActualizacion.getValue() == null
+                    || this.txt_importePrestamo.getText().isEmpty()
+                    || this.txt_ContratoSiguiente.getText().isEmpty()
+                    || this.txt_ContratoAnterior.getText().isEmpty()
+                    || this.dtLimite.getValue() == null
+                    || this.dtComercializar.getValue() == null
+                    || this.dtCancelacion.getValue() == null
+                    || this.dtComercializacion.getValue() == null
+                    || this.txt_Observaciones.getText().isEmpty()
+                    || this.txt_Refrendo.getText().isEmpty()
+                    || this.txt_Finiquito.getText().isEmpty()
+                    || this.txt_Espera.getText().isEmpty()
+                    || position <= -1
+                    || position2 <= -1) {
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error al registrar el empeño");
-            alert.setHeaderText(null);
-            alert.setContentText("Alguno de los campos se encuentra Vacio");
-            alert.showAndWait();
-        } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error al registrar el Contrato");
+                alert.setHeaderText(null);
+                alert.setContentText("Alguno de los campos se encuentra Vacio");
+                alert.showAndWait();
+            } else {
 
-            try {
-                String idusuario = Requests.get("/Usuarios/buscarUsuario/" + cmbUsuario.getValue());
-                Gson gson = new Gson();
-                TypeToken<Usuarios> token = new TypeToken<Usuarios>() {
-                };
-                Usuarios user = gson.fromJson(idusuario, token.getType());
+                try {
+                    String idusuario = Requests.get("/Usuarios/buscarUsuario/" + cmbUsuario.getValue());
+                    Gson gson = new Gson();
+                    TypeToken<Usuarios> token = new TypeToken<Usuarios>() {
+                    };
+                    Usuarios user = gson.fromJson(idusuario, token.getType());
 
-                HashMap<String, Object> params = new LinkedHashMap<>();
-                params.put("idEmpeño", cmbEmpeno.getValue());
-                params.put("fechaCreacion", this.dtCreacion.getValue());
-                params.put("fechaActualizacion", this.dtActualizacion.getValue());
-                params.put("fechaLimite", this.dtLimite.getValue());
-                params.put("fechaComercializar", this.dtComercializar.getValue());
-                params.put("importePrestamo", this.txt_importePrestamo.getText());
-                params.put("estatusContrato", "Activo");
-                params.put("contratoSiguiente", this.txt_ContratoSiguiente.getText());
-                params.put("contratoAnterior", this.txt_ContratoAnterior.getText());
-                params.put("fechaCancelacion", this.dtCancelacion.getValue());
-                params.put("fechaComercializacion", this.dtComercializacion.getValue());
-                params.put("idUsuario", user.getIdUsuario());
-                params.put("observaciones", this.txt_Observaciones.getText());
-                params.put("idRefrendo", this.txt_Refrendo.getText());
-                params.put("idFiniquito", this.txt_Finiquito.getText());
-                params.put("idEspera", this.txt_Espera.getText());
+                    HashMap<String, Object> params = new LinkedHashMap<>();
+                    params.put("idEmpeño", cmbEmpeno.getValue());
+                    params.put("fechaCreacion", this.dtCreacion.getValue());
+                    params.put("fechaActualizacion", this.dtActualizacion.getValue());
+                    params.put("fechaLimite", this.dtLimite.getValue());
+                    params.put("fechaComercializar", this.dtComercializar.getValue());
+                    params.put("importePrestamo", this.txt_importePrestamo.getText());
+                    params.put("estatusContrato", "Activo");
+                    params.put("contratoSiguiente", this.txt_ContratoSiguiente.getText());
+                    params.put("contratoAnterior", this.txt_ContratoAnterior.getText());
+                    params.put("fechaCancelacion", this.dtCancelacion.getValue());
+                    params.put("fechaComercializacion", this.dtComercializacion.getValue());
+                    params.put("idUsuario", user.getIdUsuario());
+                    params.put("observaciones", this.txt_Observaciones.getText());
+                    params.put("idRefrendo", this.txt_Refrendo.getText());
+                    params.put("idFiniquito", this.txt_Finiquito.getText());
+                    params.put("idEspera", this.txt_Espera.getText());
 
-                String respuesta = Requests.post("/Contratos/registrarContrato/", params);
-                JSONObject dataJson = new JSONObject(respuesta);
+                    String respuesta = Requests.post("/Contratos/registrarContrato/", params);
+                    JSONObject dataJson = new JSONObject(respuesta);
 
-                if ((Boolean) dataJson.get("error") == false) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Informativo");
-                    alert.setHeaderText(null);
-                    alert.setContentText(dataJson.getString("mensaje"));
-                    alert.showAndWait();
-                    Window.close(event);
+                    if ((Boolean) dataJson.get("error") == false) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informativo");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                        Window.close(event);
 
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText(dataJson.getString("mensaje"));
-                    alert.showAndWait();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                    }
+
+                } catch (JSONException ex) {
+                    Logger.getLogger(RegistrarUsuarioFXMLController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        } else {
+            int position = this.cmbUsuario.getSelectionModel().getSelectedIndex();
+            int position2 = this.cmbEmpeno.getSelectionModel().getSelectedIndex();
 
-            } catch (JSONException ex) {
-                Logger.getLogger(RegistrarUsuarioFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            if (this.dtCreacion.getValue() == null
+                    || this.dtActualizacion.getValue() == null
+                    || this.txt_importePrestamo.getText().isEmpty()
+                    || this.txt_ContratoSiguiente.getText().isEmpty()
+                    || this.txt_ContratoAnterior.getText().isEmpty()
+                    || this.dtLimite.getValue() == null
+                    || this.dtComercializar.getValue() == null
+                    || this.dtCancelacion.getValue() == null
+                    || this.dtComercializacion.getValue() == null
+                    || this.txt_Observaciones.getText().isEmpty()
+                    || this.txt_Refrendo.getText().isEmpty()
+                    || this.txt_Finiquito.getText().isEmpty()
+                    || this.txt_Espera.getText().isEmpty()
+                    || position <= -1
+                    || position2 <= -1) {
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error al registrar el Contrato");
+                alert.setHeaderText(null);
+                alert.setContentText("Alguno de los campos se encuentra Vacio");
+                alert.showAndWait();
+            } else {
+
+                try {
+                    String idusuario = Requests.get("/Usuarios/buscarUsuario/" + cmbUsuario.getValue());
+                    Gson gson = new Gson();
+                    TypeToken<Usuarios> token = new TypeToken<Usuarios>() {
+                    };
+                    Usuarios user = gson.fromJson(idusuario, token.getType());
+
+                    HashMap<String, Object> params = new LinkedHashMap<>();
+                    params.put("idContrato", contrato.getIdContrato());
+                    params.put("fechaActualizacion", this.dtActualizacion.getValue());
+                    params.put("fechaLimite", this.dtLimite.getValue());
+                    params.put("fechaComercializar", this.dtComercializar.getValue());
+                    params.put("importePrestamo", this.txt_importePrestamo.getText());
+                    params.put("contratoAnterior", this.txt_ContratoAnterior.getText());
+                    params.put("fechaComercializacion", this.dtComercializacion.getValue());
+                    params.put("fechaCancelacion", this.dtCancelacion.getValue());
+                    params.put("idUsuario", user.getIdUsuario());
+                    params.put("observaciones", this.txt_Observaciones.getText());
+                    params.put("idRefrendo", this.txt_Refrendo.getText());
+                    params.put("idFiniquito", this.txt_Finiquito.getText());
+
+                    String respuesta = Requests.post("/Contratos/actualizarContrato/", params);
+                    JSONObject dataJson = new JSONObject(respuesta);
+
+                    if ((Boolean) dataJson.get("error") == false) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Informativo");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                        Window.close(event);
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText(dataJson.getString("mensaje"));
+                        alert.showAndWait();
+                    }
+
+                } catch (JSONException ex) {
+                    Logger.getLogger(RegistrarUsuarioFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 

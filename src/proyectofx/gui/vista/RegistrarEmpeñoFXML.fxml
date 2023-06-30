@@ -58,7 +58,7 @@
             <Label layoutX="117.0" layoutY="182.0" text="\%" />
          </children>
       </Pane>
-      <Label layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="237.0" text="Registro de Empeño">
+      <Label fx:id="lblEmpeño" layoutX="29.0" layoutY="51.0" prefHeight="32.0" prefWidth="237.0" text="Registro de Empeño">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

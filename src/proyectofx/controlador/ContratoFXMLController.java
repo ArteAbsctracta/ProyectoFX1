@@ -117,4 +117,28 @@ public class ContratoFXMLController implements Initializable {
             Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void editarContrato(ActionEvent event) {
+        Contratos contratoSeleccionada = tbl_Contrato.getSelectionModel().getSelectedItem();
+        
+        try {
+            Stage stage = new Stage();   
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/RegistrarContratoFXML.fxml")); 
+            
+            Parent formUsuarioRegistrar = loader.load(); 
+            
+            RegistrarContratoFXMLController ctrl = loader.getController();   
+            ctrl.setData(contratoSeleccionada);
+            Scene scene = new Scene(formUsuarioRegistrar);  
+            stage.setScene(scene);
+            stage.setTitle("Actualizar");
+            stage.setResizable(false);
+            stage.showAndWait();
+            this.cargarTabla();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

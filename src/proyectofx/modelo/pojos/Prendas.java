@@ -237,6 +237,11 @@ public class Prendas {
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
+
+    @Override
+    public String toString() {
+        return "Prendas{" + "idPrenda=" + idPrenda + ", idEmpe\u00f1o=" + idEmpeño + ", categoria=" + categoria + ", numPiezas=" + numPiezas + ", serie=" + serie + ", modelo=" + modelo + ", subcategoria=" + subcategoria + ", descripcionPrenda=" + descripcionPrenda + ", esMetal=" + esMetal + ", peso=" + peso + ", kilataje=" + kilataje + ", prestamo=" + prestamo + ", modeloPrenda=" + modeloPrenda + ", precioComercializacion=" + precioComercializacion + ", precioVenta=" + precioVenta + ", estatusPrenda=" + estatusPrenda + ", comercializacionAsociada=" + comercializacionAsociada + ", fechaCreacion=" + fechaCreacion + ", fechaComercializacion=" + fechaComercializacion + ", fechaVenta=" + fechaVenta + ", idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + '}';
+    }
     
     
     

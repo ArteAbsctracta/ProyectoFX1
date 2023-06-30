@@ -130,4 +130,45 @@ public class PrendasFXMLController implements Initializable {
             Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void editarPrenda(ActionEvent event) {
+        Prendas prendaSeleccionada = tbl_Prendas.getSelectionModel().getSelectedItem();
+        System.out.println(prendaSeleccionada.getKilataje());
+        
+        try {
+            Stage stage = new Stage();   
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/RegistrarPrendaFXML.fxml")); 
+            
+            Parent formUsuarioRegistrar = loader.load(); 
+            
+            RegistrarPrendaFXMLController ctrl = loader.getController();   
+            ctrl.setData(prendaSeleccionada);
+            Scene scene = new Scene(formUsuarioRegistrar);  
+            stage.setScene(scene);
+            stage.setTitle("Registrar");
+            stage.setResizable(false);
+            stage.showAndWait();
+            this.cargarTabla();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void activar(ActionEvent event) {
+    }
+
+    @FXML
+    private void desactivar(ActionEvent event) {
+    }
+
+    @FXML
+    private void buscar(ActionEvent event) {
+    }
+
+    @FXML
+    private void limpiar(ActionEvent event) {
+    }
 }

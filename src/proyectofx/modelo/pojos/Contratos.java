@@ -12,7 +12,7 @@ package proyectofx.modelo.pojos;
 public class Contratos {
 
     private Integer idContrato;
-    private Integer idEmpeno;
+    private Integer idEmpeño;
     private Integer idEspera;
     private Integer idFiniquito;
     private Integer idRefrendo;
@@ -32,9 +32,9 @@ public class Contratos {
     public Contratos() {
     }
 
-    public Contratos(Integer idContrato, Integer idEmpeno, Integer idEspera, Integer idFiniquito, Integer idRefrendo, Integer idUsuario, Integer importePrestamo, String observaciones, String fechaLimite, String fechaCreacion, String fechaComercializacion, String fechaCancelacion, String fechaActualizacion, String estatusContrato, String contratoSiguiente, String contratoAnterior, String nombreUsuario) {
+    public Contratos(Integer idContrato, Integer idEmpeño, Integer idEspera, Integer idFiniquito, Integer idRefrendo, Integer idUsuario, Integer importePrestamo, String observaciones, String fechaLimite, String fechaCreacion, String fechaComercializacion, String fechaCancelacion, String fechaActualizacion, String estatusContrato, String contratoSiguiente, String contratoAnterior, String nombreUsuario) {
         this.idContrato = idContrato;
-        this.idEmpeno = idEmpeno;
+        this.idEmpeño = idEmpeño;
         this.idEspera = idEspera;
         this.idFiniquito = idFiniquito;
         this.idRefrendo = idRefrendo;
@@ -70,12 +70,12 @@ public class Contratos {
         this.idContrato = idContrato;
     }
 
-    public Integer getIdEmpeno() {
-        return idEmpeno;
+    public Integer getIdEmpeño() {
+        return idEmpeño;
     }
 
-    public void setIdEmpeno(Integer idEmpeno) {
-        this.idEmpeno = idEmpeno;
+    public void setIdEmpeño(Integer idEmpeno) {
+        this.idEmpeño = idEmpeno;
     }
 
     public Integer getIdEspera() {
@@ -190,4 +190,11 @@ public class Contratos {
         this.contratoAnterior = contratoAnterior;
     }
 
+    @Override
+    public String toString() {
+        return "Contratos{" + "idContrato=" + idContrato + ", idEmpeno=" + idEmpeño + ", idEspera=" + idEspera + ", idFiniquito=" + idFiniquito + ", idRefrendo=" + idRefrendo + ", idUsuario=" + idUsuario + ", importePrestamo=" + importePrestamo + ", observaciones=" + observaciones + ", fechaLimite=" + fechaLimite + ", fechaCreacion=" + fechaCreacion + ", fechaComercializacion=" + fechaComercializacion + ", fechaCancelacion=" + fechaCancelacion + ", fechaActualizacion=" + fechaActualizacion + ", estatusContrato=" + estatusContrato + ", contratoSiguiente=" + contratoSiguiente + ", contratoAnterior=" + contratoAnterior + ", nombreUsuario=" + nombreUsuario + '}';
+    }
+
+    
+    
 }

@@ -120,6 +120,29 @@ public class EmpenoFXMLController implements Initializable {
             Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void editarEmpeño(ActionEvent event) {
+        Empeño prendaSeleccionada = tbl_Empeno.getSelectionModel().getSelectedItem();        
+        try {
+            Stage stage = new Stage();   
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectofx/gui/vista/RegistrarEmpeñoFXML.fxml")); 
+            
+            Parent formUsuarioRegistrar = loader.load(); 
+            
+            RegistrarEmpeñoFXMLController ctrl = loader.getController();   
+            ctrl.setData(prendaSeleccionada);
+            Scene scene = new Scene(formUsuarioRegistrar);  
+            stage.setScene(scene);
+            stage.setTitle("Registrar");
+            stage.setResizable(false);
+            stage.showAndWait();
+            this.cargarTabla();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuariosFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 }
